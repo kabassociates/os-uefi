@@ -12,7 +12,7 @@ jobs:
 
     - name: Install github-release
       run: |
-        sudo wget https://github.com/github-release/github-release/releases/download/v0.9.0/linux-amd64-github-release.bz2 -O /usr/local/bin/github-release.bz2
+        sudo wget https://github.com/github-release/github-release/releases/download/v0.10.0/linux-amd64-github-release.bz2 -O /usr/local/bin/github-release.bz2
         sudo bunzip2 /usr/local/bin/github-release.bz2
         sudo chmod 0755 /usr/local/bin/github-release
 
@@ -37,8 +37,8 @@ jobs:
     - name: Release efi.img
       run: |
         VERSION=`date +%Y-%m-%d`
-        github-release release --user burmilla --repo os-uefi --tag ${VERSION} --pre-release
-        github-release upload --user burmilla --repo os-uefi --tag ${VERSION} --file efi.img --name efi.img
-        github-release upload --user burmilla --repo os-uefi --tag ${VERSION} --file efi.tar.gz --name efi.tar.gz
+        github-release release --user srbala --repo os-uefi --tag ${VERSION} --pre-release
+        github-release upload --user srbala --repo os-uefi --tag ${VERSION} --file efi.img --name efi.img
+        github-release upload --user srbala --repo os-uefi --tag ${VERSION} --file efi.tar.gz --name efi.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.OS_RELEASE_TOKEN }}
